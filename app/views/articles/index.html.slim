@@ -1,57 +1,56 @@
-h1.mb-4
-  | Articles#index
+h2.my-4 記事一覧
 .row.mb-4
-  .col
+  .col-md-4.mb-4
     ul.list-group
       li.list-group-item.active 探索
       - @search.each do |a|
         li.list-group-item
           = link_to a.title, article_path(a.id)
-  .col
+  .col-md-4.mb-4
     ul.list-group
       li.list-group-item.active ソート
       - @sort.each do |a|
         li.list-group-item
           = link_to a.title, article_path(a.id)
-  .col
+  .col-md-4.mb-4
     ul.list-group
       li.list-group-item.active 木構造
       - @tree.each do |a|
         li.list-group-item
           = link_to a.title, article_path(a.id)
 .row.mb-4
-  .col
+  .col-md-4.mb-4
     ul.list-group
       li.list-group-item.active 動的計画法
       - @dp.each do |a|
         li.list-group-item
           = link_to a.title, article_path(a.id)
-  .col
+  .col-md-4.mb-4
     ul.list-group
       li.list-group-item.active グラフ
       - @graph.each do |a|
         li.list-group-item
           = link_to a.title, article_path(a.id)
-  .col
+  .col-md-4.mb-4
     ul.list-group
       li.list-group-item.active 重み付きグラフ
       - @w_graph.each do |a|
         li.list-group-item
           = link_to a.title, article_path(a.id)
 .row
-  .col
+  .col-md-4.mb-4
     ul.list-group
       li.list-group-item.active 整数論
       - @integer.each do |a|
         li.list-group-item
           = link_to a.title, article_path(a.id)
-  .col
+  .col-md-4.mb-4
     ul.list-group
       li.list-group-item.active 累積和
       - @sum.each do |a|
         li.list-group-item
           = link_to a.title, article_path(a.id)
-  .col
+  .col-md-4.mb-4
     ul.list-group
       li.list-group-item.active bit
       - @bit.each do |a|
