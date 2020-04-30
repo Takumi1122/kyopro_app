@@ -9,10 +9,11 @@ html
     = javascript_include_tag 'application'
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light
-      .navbar-brand 競プロアプリ
+      = link_to '競プロアプリ', root_path, class: 'navbar-brand'
 
       ul.navbar-nav.ml-auto
         - if current_user
+          li.nav-item= link_to '記事作成', new_article_path, class: 'nav-link'
           li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
         - else
           li.nav-item= link_to '新規登録', new_user_path, class: 'nav-link'

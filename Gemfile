@@ -54,4 +54,4 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'bootstrap'
 gem 'bcrypt'
-
+gem 'rails_autolink'
