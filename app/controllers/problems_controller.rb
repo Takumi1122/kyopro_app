@@ -25,7 +25,7 @@ class ProblemsController < ApplicationController
     @problem.article_id = params[:article_id]
 
     if @problem.save
-      redirect_to article_problem_path, notice: "問題「#{@problem.title}」を登録しました。"
+      redirect_to article_problem_path(@problem.article, @problem), notice: "問題「#{@problem.title}」を登録しました。"
     else
       render :new
     end

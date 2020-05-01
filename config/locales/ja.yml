@@ -20,7 +20,7 @@ ja:
         id: ID
         title: タイトル
         body: 問題文
-        link: 問題リンク
+        link: リンク
         answer: 解答
   date:
     abbr_day_names:
