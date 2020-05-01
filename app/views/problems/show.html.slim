@@ -1,0 +1,35 @@
+h2.my-4 問題詳細
+
+.nav.justify-content-end
+  = link_to '一覧', root_path, class: 'nav-link'
+table.table.table-hover
+  tbody
+    tr
+      th= Problem.human_attribute_name(:id)
+      td= @problem.id
+    tr
+      th= Problem.human_attribute_name(:title)
+      td= @problem.title
+    tr
+      th= Problem.human_attribute_name(:body)
+      td= auto_link(safe_join(@problem.body.split("\n"),tag(:br)), html: {target: '_blank', rel: "noopener noreferrer"})
+    tr
+      th= Problem.human_attribute_name(:link)
+      td= auto_link(safe_join(@problem.link.split("\n"),tag(:br)), html: {target: '_blank', rel: "noopener noreferrer"})
+    tr
+      th= Problem.human_attribute_name(:created_at)
+      td= @problem.created_at
+    tr
+      th= Problem.human_attribute_name(:updated_at)
+      td= @problem.updated_at
+
+h2.mt-4 解答
+pre
+  code.bg-light.p-3= @problem.answer
+
+
+.mb-4
+  = link_to '関連問題一覧', article_problems_path(article_id: @article.id), class: 'btn btn-primary mr-3'
+  - if(@article.user == current_user)
+    = link_to '編集', edit_article_problem_path, class: 'btn btn-primary mr-3'
+    = link_to '削除', article_problem_path, method: :delete, data: { confirm: "問題「#{@problem.title}」を削除します。よろしいですか？"}, class: 'btn btn-danger'

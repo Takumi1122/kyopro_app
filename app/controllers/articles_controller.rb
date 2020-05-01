@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  before_action :create_user_only, only: [:edit, :update, :destroy]
+  
   def index
     search = Category.find_by(name: "探索")
     sort = Category.find_by(name: "ソート")
@@ -65,5 +67,10 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :body, :category_id)
+  end
+
+  def create_user_only
+    article = Article.find(params[:id])
+    redirect_to root_path if(article.user != current_user)
   end
 end

@@ -1,0 +1,16 @@
+h2.my-4 問題一覧
+
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Problem.human_attribute_name(:id)
+      th= Problem.human_attribute_name(:title)
+      th= Problem.human_attribute_name(:link)
+      th= Problem.human_attribute_name(:created_at)
+  tbody
+    - @problems.each do |problem|
+      tr 
+        td= problem.id
+        td= link_to problem.title, article_problem_path(problem.article, problem)
+        td= auto_link(problem.link)
+        td= problem.created_at

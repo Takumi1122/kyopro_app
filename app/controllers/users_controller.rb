@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def new
     redirect_to root_path if(session[:user_id]) 
     @user = User.new
+    render layout: false
   end
 
   def create

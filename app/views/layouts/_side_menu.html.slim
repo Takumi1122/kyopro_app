@@ -1,0 +1,15 @@
+.card.my-4
+  .card-header プロフィール
+  .card-body
+    h2.card-title = current_user.name
+    p.card-text = current_user.email
+.card.my-4
+  .card-header 最近の記事
+  .card-body
+    - recent_articles.each do |article|
+      .card-text =link_to article.title, article_path(article)
+.card.my-4
+  .card-header 最近の問題
+  .card-body
+    - recent_problems.each do |problem|
+      .card-text =link_to problem.title, article_problem_path(problem.article, problem)
