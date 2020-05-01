@@ -2,7 +2,8 @@ class ProblemsController < ApplicationController
   before_action :create_user_only, only: [:edit, :update, :destroy]
 
   def all_problem
-    @problems = Problem.all
+    @q = Problem.ransack(params[:q])
+    @problems = @q.result(distinct: true)
   end
 
   def index

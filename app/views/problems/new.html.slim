@@ -14,11 +14,11 @@ h2.my-4 関連問題の新規登録
     = f.text_field :title, class: 'form-control', id: 'problem_title'
   .form-group
     = f.label :body
-    = f.text_area :body, rows: 5, class: 'form-control', id: 'problem_body'
+    = f.text_area :body, rows: 10, class: 'form-control', id: 'problem_body'
   .form-group
     = f.label :link
     = f.text_field :link, class: 'form-control', id: 'problem_link'
   .form-group
     = f.label :answer
-    = f.text_area :answer, rows: 5, class: 'form-control', id: 'problem_answer'
+    = f.text_area :answer, rows: 10, class: 'form-control', id: 'problem_answer'
   = f.submit '登録', class: 'btn btn-primary'
