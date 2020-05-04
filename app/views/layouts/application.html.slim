@@ -27,7 +27,9 @@ html
           li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
     .container
       - if flash.notice.present?
-        .alert.alert-success.my-3= flash.notice
+        .alert.alert-success.my-3
+          = flash.notice
+          button.close data-dismiss="alert" type="button" ×
       .row
         .col-md-9
           = yield

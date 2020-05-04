@@ -25,8 +25,8 @@ table.table.table-hover
 
 .mb-4
   = link_to '関連問題一覧', article_problems_path(article_id: @article.id), class: 'btn btn-primary mr-3'
+  = link_to '関連問題を作成', new_article_problem_path(article_id: @article.id), class: 'btn btn-primary mr-3'
   - if(@article.user == current_user)
-    = link_to '関連問題を作成', new_article_problem_path(article_id: @article.id), class: 'btn btn-primary mr-3'
     = link_to '編集', edit_article_path, class: 'btn btn-primary mr-3'
     = link_to '削除', @article, method: :delete, data: { confirm: "記事「#{@article.title}」を削除します。よろしいですか？"}, class: 'btn btn-danger'
 

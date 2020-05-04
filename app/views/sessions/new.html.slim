@@ -26,7 +26,9 @@ html
           li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
     .container
       - if flash.notice.present?
-        .alert.alert-success.my-3= flash.notice
+        .alert.alert-success.my-3
+          = flash.notice
+          button.close data-dismiss="alert" type="button" ×
       h2.my-4 ログイン
 
       = form_with scope: :session, local: true do |f|

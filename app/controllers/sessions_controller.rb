@@ -10,11 +10,11 @@ class SessionsController < ApplicationController
   def login
     user = User.find_by(email: session_params[:email])
 
-    if user&.authenticate(session_params[:password])
+    if user && user.authenticate(session_params[:password])
       session[:user_id] = user.id
       redirect_to root_path, notice: 'ログインしました'
     else
-      render :new
+      render :new, layout: false
     end
   end
 

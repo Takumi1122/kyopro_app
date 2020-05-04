@@ -4,4 +4,5 @@ class Problem < ApplicationRecord
   validates :title, length: { maximum: 30 }
 
   belongs_to :article
+  belongs_to :user
 end
