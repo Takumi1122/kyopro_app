@@ -48,6 +48,10 @@ $ bin/rails db:create
 $ bin/rails db:migrate
 $ bin/rails db:seed
 ````
+- mysqlにkyopro_dumpをインポートする
+````
+$ mysql -u ユーザー名 -p データベース名 < kyopro_dump
+````
 - railsサーバーを起動させる
 ````
 $ bin/rails s
