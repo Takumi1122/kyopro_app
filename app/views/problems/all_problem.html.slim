@@ -9,6 +9,10 @@ h2.my-4 問題一覧
     = f.label :created_at_gteq, '登録日時', class: 'col-sm-2 col-form-label'
     .col-sm-10
       = f.search_field :created_at_gteq, class: 'form-control'
+  .form-group.row
+    = f.label :article_id_eq, '関連記事', class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.collection_select :article_id_eq, @articles, :id, :title, {prompt: ''}, {class: 'form-control article-problem'}
   .form-group
     = f.submit class: 'btn btn-outline-primary'
 
