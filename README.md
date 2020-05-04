@@ -5,6 +5,7 @@
 ![kyopro-app-index](https://user-images.githubusercontent.com/42643926/80936240-2e40bb00-8e0b-11ea-97e5-5216e6d1eaec.png)
 
 # 環境
+- macOS Catalina 10.15.4
 - Ruby 2.6.2
 - Ruby on Rails 5.2.4.2
 - bundler 1.17.2
