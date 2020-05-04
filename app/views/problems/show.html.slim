@@ -30,6 +30,6 @@ pre
 
 .mb-4
   = link_to '関連問題一覧', article_problems_path(article_id: @article.id), class: 'btn btn-primary mr-3'
-  - if(@article.user == current_user)
+  - if(@problem.user == current_user)
     = link_to '編集', edit_article_problem_path, class: 'btn btn-primary mr-3'
     = link_to '削除', article_problem_path, method: :delete, data: { confirm: "問題「#{@problem.title}」を削除します。よろしいですか？"}, class: 'btn btn-danger'

@@ -16,6 +16,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require select2
 
 
 $(document).ready(function () {
@@ -24,4 +25,6 @@ $(document).ready(function () {
     $(this).toggleClass("ac");
     $(this).next(".ans").slideToggle();
   });
+
+  $('.article-problem').select2();
 });

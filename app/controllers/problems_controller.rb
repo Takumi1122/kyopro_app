@@ -2,6 +2,7 @@ class ProblemsController < ApplicationController
   before_action :create_user_only, only: [:edit, :update, :destroy]
 
   def all_problem
+    @articles = Article.all
     @q = Problem.ransack(params[:q])
     @problems = @q.result(distinct: true)
   end
@@ -24,6 +25,7 @@ class ProblemsController < ApplicationController
   def create
     @problem = Problem.new(problem_params)
     @problem.article_id = params[:article_id]
+    @problem.user_id = current_user.id
 
     if @problem.save
       redirect_to article_problem_path(@problem.article, @problem), notice: "問題「#{@problem.title}」を登録しました。"
@@ -56,7 +58,7 @@ class ProblemsController < ApplicationController
   end
 
   def create_user_only
-    article = Article.find(params[:article_id])
-    redirect_to root_path if(article.user != current_user)
+    problem = Problem.find(params[:id])
+    redirect_to root_path if(problem.user != current_user)
   end
 end
