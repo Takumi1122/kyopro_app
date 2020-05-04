@@ -1,11 +1,41 @@
-h1 ログイン
+doctype html
+html
+  head
+    title
+      | 競プロアプリ
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/vs.min.css" rel="stylesheet" 
+    link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" 
+    script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" 
+    javascript:
+      hljs.initHighlightingOnLoad();
+  body
+    .app-title.navbar.navbar-expand-md.navbar-light.bg-light
+      = link_to '競プロアプリ', root_path, class: 'navbar-brand'
 
-= form_with scope: :session, local: true do |f|
-  .form-group
-    = f.label :email, 'メールアドレス'
-    = f.text_field :email, class: 'form-control', id: 'session_email'
-  .form-group
-    = f.label :password, 'パスワード'
-    = f.password_field :password, class: 'form-control', id: 'session_password'
-  = f.submit 'ログインする', class: 'btn btn-primary'
+      ul.navbar-nav.ml-auto
+        - if current_user
+          li.nav-item= link_to '問題一覧', problems_path, class: 'nav-link'
+          li.nav-item= link_to '記事作成', new_article_path, class: 'nav-link'
+          li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+        - else
+          li.nav-item= link_to '新規登録', new_user_path, class: 'nav-link'
+          li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
+    .container
+      - if flash.notice.present?
+        .alert.alert-success.my-3= flash.notice
+      h2.my-4 ログイン
+
+      = form_with scope: :session, local: true do |f|
+        .form-group
+          = f.label :email, 'メールアドレス'
+          = f.text_field :email, class: 'form-control', id: 'session_email'
+        .form-group
+          = f.label :password, 'パスワード'
+          = f.password_field :password, class: 'form-control', id: 'session_password'
+        = f.submit 'ログインする', class: 'btn btn-primary'
+
 

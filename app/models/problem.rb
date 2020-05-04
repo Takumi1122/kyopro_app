@@ -1,9 +1,7 @@
-class Article < ApplicationRecord
+class Problem < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   validates :title, length: { maximum: 30 }
 
-  belongs_to :user
-  belongs_to :category
-  has_many :problems
+  belongs_to :article
 end

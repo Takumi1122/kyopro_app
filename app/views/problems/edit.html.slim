@@ -1,0 +1,24 @@
+h2.my-4 関連問題の新規登録
+
+.nav.justify-content-end
+  = link_to '一覧', root_path, class: 'nav-link'
+
+- if @problem.errors.present?
+  ul#error_explanation
+    - @problem.errors.full_messages.each do |message|
+      li= message
+      
+= form_with model: [@article, @problem], url: article_problem_path, local: true do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control', id: 'problem_title'
+  .form-group
+    = f.label :body
+    = f.text_area :body, rows: 10, class: 'form-control', id: 'problem_body'
+  .form-group
+    = f.label :link
+    = f.text_field :link, class: 'form-control', id: 'problem_link'
+  .form-group
+    = f.label :answer
+    = f.text_area :answer, rows: 10, class: 'form-control', id: 'problem_answer'
+  = f.submit '編集を完了', class: 'btn btn-primary'

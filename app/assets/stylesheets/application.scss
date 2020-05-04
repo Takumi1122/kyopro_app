@@ -1,1 +1,23 @@
 @import "bootstrap";
+
+h2 {
+  font-size: 18px;
+}
+
+html {
+  font-size: 14px; /* ルート要素のフォントサイズを1rem=14pxと定義する */
+}
+
+.ans {
+  position: relative;
+}
+
+.ans:after {
+  font-family: "Font Awesome 5 Free";
+  content: "\f106";
+  font-weight: 900;
+}
+
+.ans.ac:after {
+  content: "\f107";
+}

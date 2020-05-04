@@ -1,0 +1,25 @@
+h2.my-4 問題一覧
+
+= search_form_for @q, class: 'mb-5' do |f|
+  .form-group.row
+    = f.label :title_cont, 'タイトル', class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.search_field :title_cont, class: 'form-control'
+  .form-group.row
+    = f.label :created_at_gteq, '登録日時', class: 'col-sm-2 col-form-label'
+    .col-sm-10
+      = f.search_field :created_at_gteq, class: 'form-control'
+  .form-group
+    = f.submit class: 'btn btn-outline-primary'
+
+.table-responsive
+  table.table.table-hover
+    thead.thead-default
+      tr
+        th= Problem.human_attribute_name(:title)
+        th= Problem.human_attribute_name(:link)
+    tbody
+      - @problems.each do |problem|
+        tr 
+          td= link_to problem.title, article_problem_path(problem.article, problem)
+          td= auto_link(problem.link)

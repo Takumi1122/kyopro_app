@@ -7,12 +7,19 @@ html
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
+    link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/vs.min.css" rel="stylesheet" 
+    link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet" 
+    script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" 
+    javascript:
+      hljs.initHighlightingOnLoad();
   body
     .app-title.navbar.navbar-expand-md.navbar-light.bg-light
+      i.fas.fa-desktop.mr-2
       = link_to '競プロアプリ', root_path, class: 'navbar-brand'
 
       ul.navbar-nav.ml-auto
         - if current_user
+          li.nav-item= link_to '問題一覧', problems_path, class: 'nav-link'
           li.nav-item= link_to '記事作成', new_article_path, class: 'nav-link'
           li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
         - else
@@ -20,5 +27,9 @@ html
           li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
     .container
       - if flash.notice.present?
-        .alert.alert-success= flash.notice
-      = yield
+        .alert.alert-success.my-3= flash.notice
+      .row
+        .col-md-9
+          = yield
+        .col-md-3
+          = render 'layouts/side_menu'

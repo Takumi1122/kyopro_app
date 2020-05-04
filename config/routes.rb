@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#login'
   delete '/logout', to: 'sessions#logout'
 
-  # 記事
-  resources :articles
+  # 記事 記事関連の問題
+  resources :articles do
+    resources :problems
+  end
+  get '/problems', to: 'problems#all_problem'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
