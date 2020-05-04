@@ -1,0 +1,195 @@
+-- MySQL dump 10.13  Distrib 8.0.19, for osx10.15 (x86_64)
+--
+-- Host: localhost    Database: kyopro_app_development
+-- ------------------------------------------------------
+-- Server version	8.0.19
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `ar_internal_metadata`
+--
+
+DROP TABLE IF EXISTS `ar_internal_metadata`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ar_internal_metadata` (
+  `key` varchar(255) NOT NULL,
+  `value` varchar(255) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ar_internal_metadata`
+--
+
+LOCK TABLES `ar_internal_metadata` WRITE;
+/*!40000 ALTER TABLE `ar_internal_metadata` DISABLE KEYS */;
+INSERT INTO `ar_internal_metadata` VALUES ('environment','development','2020-04-30 00:36:54','2020-04-30 00:36:54');
+/*!40000 ALTER TABLE `ar_internal_metadata` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `articles`
+--
+
+DROP TABLE IF EXISTS `articles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `articles` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `body` text NOT NULL,
+  `user_id` bigint NOT NULL,
+  `category_id` bigint NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_articles_on_user_id` (`user_id`),
+  KEY `index_articles_on_category_id` (`category_id`),
+  CONSTRAINT `fk_rails_3d31dad1cc` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `fk_rails_af09d53ead` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `articles`
+--
+
+LOCK TABLES `articles` WRITE;
+/*!40000 ALTER TABLE `articles` DISABLE KEYS */;
+INSERT INTO `articles` VALUES (2,'挿入ソート','挿入ソート（インサーションソート）は、ソートのアルゴリズムの一つ。整列してある配列に追加要素を適切な場所に挿入すること。平均計算時間・最悪計算時間がともにO(n^2)と遅いが、アルゴリズムが単純で実装が容易なため、しばしば用いられる。安定な内部ソート。基本挿入法ともいう。in-placeアルゴリズムであり、オンラインアルゴリズムである。\r\n\r\n挿入ソートを高速化したソート法として、シェルソートが知られている。\r\n\r\n',1,2,'2020-04-30 04:46:04','2020-05-01 06:32:27'),(3,'バブルソート','バブルソート (bubble sort) は、ソートのアルゴリズムの一つ。隣り合う要素の大小を比較しながら整列させること。最悪計算時間がO(n2)と遅いが、アルゴリズムが単純で実装が容易なため、また並列処理との親和性が高いことから、しばしば用いられる。安定な内部ソート。基本交換法、隣接交換法ともいう[1]。（単に交換法と言う場合もある）\r\n\r\n※ ウィキペディアより https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%96%E3%83%AB%E3%82%BD%E3%83%BC%E3%83%88',2,2,'2020-04-30 06:47:36','2020-04-30 06:47:36'),(4,'ナップザック問題','ナップサック問題（ナップサックもんだい、Knapsack problem）は、計算複雑性理論における計算の難しさの議論の対象となる問題の一つで、「容量 C のナップサックが一つと、n 種類の品物（各々、価値 pi, 容積 ci）が与えられたとき、ナップサックの容量 C を超えない範囲でいくつかの品物をナップサックに詰め、ナップサックに入れた品物の価値の和を最大化するにはどの品物を選べばよいか」という整数計画問題である。同じ種類の品物を1つまでしか入れられない場合（xi ∈ {0, 1}）や、同じ品物をいくつでも入れてよい場合（xi ∈ 0以上の整数）など、いくつかのバリエーションが存在する。',1,4,'2020-05-01 05:36:43','2020-05-01 05:36:43'),(5,'部分和問題','部分和問題（ぶぶんわもんだい）は、計算複雑性理論・暗号理論における問題で、与えられた n 個の整数 a1,...,an から部分集合をうまく選んで、その集合内の数の和が与えられた数 N に等しくなるようにできるかどうかを判定する問題である。NP完全であることが知られている。\r\n\r\n部分和問題は、分割問題 (Number Partitioning) の一般形でもある。分割問題とは、与えられた n 個の整数 a1,...,an を二つの集合に分け、各々の集合内の数の和がもう一方の集合内の数の和と等しくなるようにできるかどうかを判定する問題である。分割問題も、NP完全であることが示されている。\r\n\r\nたとえば、「{1,3,7,10,13} の部分和で、和が 21 になるものは存在するか？」であれば存在する（{1,7,13}である）、が答えである。また「{2,4,6,8,10} の部分和で、和が 19 になるものは存在するか？」であれば、存在しない（どんな部分和も偶数にしかならない）、が答えである。\r\n\r\n\r\n部分和問題は、ナップサック問題に含まれるため、動的計画法等の手法で解くことができる。',1,4,'2020-05-01 05:42:20','2020-05-01 05:42:20'),(6,'最長共通部分列問題','最長共通部分列問題（さいちょうきょうつうぶぶんれつもんだい、英: Longest-common subsequence problem, LCS）とは、与えられた列の集合（しばしば、2つの列からなる集合）の最長共通部分列を見つけ出す問題である。（ここで部分列(subsequence)は、部分文字列(substring)とは異なることに注意する。前者は元の列の連続した項からなる必要はない。）例えば、「ABCX」と「AYBZC」との最長共通部分列は「ABC」である。この問題は計算機科学における古典的問題であり、diff などのファイル比較プログラムの基礎をなし、バイオインフォマティクスにも応用されている。',1,4,'2020-05-01 06:20:59','2020-05-01 06:20:59'),(7,'レーベルシュタイン距離','レーベンシュタイン距離（レーベンシュタインきょり、英: Levenshtein distance）は、二つの文字列がどの程度異なっているかを示す距離の一種である。編集距離（へんしゅうきょり、英: edit distance）とも呼ばれる。具体的には、1文字の挿入・削除・置換によって、一方の文字列をもう一方の文字列に変形するのに必要な手順の最小回数として定義される[1]。名称は、1965年にこれを考案したロシアの学者ウラジーミル・レーベンシュタイン (露: Влади́мир Левенште́йн) にちなむ。\r\n\r\nレーベンシュタイン距離は、同じ文字数の単語に対する置換編集に使われているハミング距離の一般化であると見なすことが可能である。レーベンシュタイン距離の更なる一般化として、例えば一回の操作で二文字を変換する等の方法が考えられる。',1,4,'2020-05-01 06:24:20','2020-05-01 06:24:20'),(8,'幅優先探索','幅優先探索（はばゆうせんたんさく、英: breadth first search）はグラフ理論(Graph theory)において木構造(tree structure)やグラフ(graph)の探索に用いられるアルゴリズム。アルゴリズムは根ノードで始まり隣接した全てのノードを探索する。それからこれらの最も近いノードのそれぞれに対して同様のことを繰り返して探索対象ノードをみつける。「横型探索」とも言われる。\r\n\r\n幅優先探索は解を探すために、グラフの全てのノードを網羅的に展開・検査する。最良優先探索とは異なり、ノード探索にヒューリスティクスを使わずに、グラフ全体を目的のノードがみつかるまで、目的のノードに接近しているかどうかなどは考慮せず探索する。',1,5,'2020-05-01 10:20:58','2020-05-01 10:20:58'),(9,'深さ優先探索','深さ優先探索（ふかさゆうせんたんさく、英: depth-first search, DFS、バックトラック法ともいう）は、木やグラフを探索するためのアルゴリズムである。アルゴリズムは根から(グラフの場合はどのノードを根にするか決定する)始まり、バックトラックするまで可能な限り探索を行う。「縦型探索」とも呼ばれる。',1,5,'2020-05-01 10:22:10','2020-05-01 10:22:10'),(10,'ダイクストラ法','ダイクストラ法（だいくすとらほう、英: Dijkstra\'s algorithm）はグラフ理論における辺の重みが非負数の場合の単一始点最短経路問題を解くための最良優先探索によるアルゴリズムである。辺の重みに負数を含む場合はベルマン-フォード法などが使える。辺の重みが全て同一の非負数の場合は幅優先探索が速く、線形時間で最短路を計算可能である。また、無向グラフで辺の重みが正整数の場合は、Thorupのアルゴリズム[1]によって線形時間での計算が可能であるが、実用性はあまり高くない。',1,6,'2020-05-01 10:23:44','2020-05-01 10:23:44'),(11,'プリム法','プリム法とは、グラフ理論で重み付き連結グラフの最小全域木を求める最適化問題のアルゴリズムである。全域木（対象となるグラフの全頂点を含む辺の部分集合で構成される木）のうち、その辺群の重みの総和が最小となる木を求めるものである。このアルゴリズムは1930年に数学者 Vojtěch Jarník が発見し、1957年に計算機科学者ロバート・C・プリムが独自に発見、さらに1959年にはエドガー・ダイクストラが再発見しダイクストラ法の論文に記載している。そのため、DJP法、Jarník法、Prim-Jarník法などとも呼ばれることがある。アルゴリズムの発想や計算量は同時期に発表されたダイクストラ法に類似している。',1,6,'2020-05-01 10:24:48','2020-05-01 10:24:48'),(12,'ワーシャル–フロイド法','ワーシャル–フロイド法（英: Warshall–Floyd Algorithm）は、重み付き有向グラフの全ペアの最短経路問題を多項式時間で解くアルゴリズムである。名称は考案者であるスティーブン・ワーシャル（英語版）とロバート・フロイドにちなむ（2人はそれぞれ独立に考案）。フロイドのアルゴリズム、ワーシャルのアルゴリズム、フロイド–ワーシャル法とも呼ばれる。',1,6,'2020-05-01 10:26:06','2020-05-01 10:26:06'),(13,'クラスカル法','クラスカル法（英: Kruskal\'s algorithm）は、グラフ理論において重み付き連結グラフの最小全域木を求める最適化問題のアルゴリズムである。',1,6,'2020-05-01 10:26:47','2020-05-01 10:26:47'),(14,'二分探索木','二分探索木（にぶんたんさくぎ、英: binary search tree）は、コンピュータプログラムにおいて、「左の子孫の値 ≤ 親の値 ≤ 右の子孫の値」という制約を持つ二分木である。探索木のうちで最も基本的な木構造である。',1,3,'2020-05-01 10:28:02','2020-05-01 10:28:02'),(15,'ヒープ','ヒープ（英: heap）とは、「子要素は親要素より常に大きいか等しい（または常に小さいか等しい）」という制約を持つ木構造の事。単に「ヒープ」という場合、二分木を使った二分ヒープを指すことが多いため、そちらを参照すること。',1,3,'2020-05-01 10:28:43','2020-05-01 10:28:43'),(16,'線形探索','線形探索（せんけいたんさく、英: linear search, sequential search）は、検索のアルゴリズムの一つ。 リストや配列に入ったデータに対する検索を行うにあたって、 先頭から順に比較を行い、それが見つかれば終了する。',1,1,'2020-05-01 10:30:04','2020-05-01 10:30:04'),(17,'二分探索','二分探索（にぶんたんさく、英: binary search、BS）やバイナリサーチとは、ソート済み配列に対する探索アルゴリズムの一つ。',1,1,'2020-05-01 10:31:05','2020-05-01 10:31:05'),(18,'エラトステネスの篩','エラトステネスの篩 (エラトステネスのふるい、英: Sieve of Eratosthenes) は、指定された整数以下の全ての素数を発見するための単純なアルゴリズムである。古代ギリシアの科学者、エラトステネスが考案したとされるため、この名がある。',1,7,'2020-05-01 10:32:13','2020-05-01 10:32:13'),(19,'ユークリッドの互除法','ユークリッドの互除法（ユークリッドのごじょほう、英: Euclidean Algorithm）は、2 つの自然数の最大公約数を求める手法の一つである。\r\n\r\n2 つの自然数 a, b (a ≧ b) について、a の b による剰余を r とすると、 a と b との最大公約数は b と r との最大公約数に等しいという性質が成り立つ。この性質を利用して、 b を r で割った剰余、 除数 r をその剰余で割った剰余、と剰余を求める計算を逐次繰り返すと、剰余が 0 になった時の除数が a と b との最大公約数となる。',1,7,'2020-05-01 10:33:11','2020-05-01 10:33:11'),(20,'フェルマーの小定理','数論において、フェルマーの小定理（フェルマーのしょうていり、英: Fermat\'s little theorem）は素数の性質についての定理であり、実用としてもRSA暗号に応用されている定理である。',1,7,'2020-05-01 10:34:06','2020-05-01 10:34:06'),(21,'中国の剰余定理','中国の剰余定理（ちゅうごくのじょうよていり、英: Chinese remainder theorem）は、中国の算術書『孫子算経』に由来する整数の剰余に関する定理である。あるいは、それを一般化した可換環論における定理でもある。中国人の剰余定理（ちゅうごくじんのじょうよていり）、孫子の定理（そんしのていり、英: Sunzi\'s theorem）とも呼ばれる。\r\n\r\n『孫子算経』には、「3で割ると2余り、5で割ると3余り、7で割ると2余る数は何か」という問題とその解法が書かれている。中国の剰余定理は、この問題を他の整数についても適用できるように一般化したものである。',1,7,'2020-05-01 10:35:12','2020-05-01 10:35:12'),(22,'巡回セールスマン問題','巡回セールスマン問題（じゅんかいセールスマンもんだい、英: traveling salesman problem、TSP）は、都市の集合と各2都市間の移動コスト（たとえば距離）が与えられたとき、全ての都市をちょうど一度ずつ巡り出発地に戻る巡回路のうちで総移動コストが最小のものを求める（セールスマンが所定の複数の都市を1回だけ巡回する場合の最短経路を求める）組合せ最適化問題である。',1,9,'2020-05-01 10:38:00','2020-05-01 10:38:00'),(23,'bit全探索','状態が2^n通りある問題に対して二進数をフラグに見立てる事で全探索をする方法です。',1,9,'2020-05-01 10:40:22','2020-05-01 10:40:22');
+/*!40000 ALTER TABLE `articles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `categories` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categories`
+--
+
+LOCK TABLES `categories` WRITE;
+/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
+INSERT INTO `categories` VALUES (1,'探索','2020-04-30 02:59:50','2020-04-30 02:59:50'),(2,'ソート','2020-04-30 02:59:50','2020-04-30 02:59:50'),(3,'木構造','2020-04-30 02:59:50','2020-04-30 02:59:50'),(4,'動的計画法','2020-04-30 02:59:50','2020-04-30 02:59:50'),(5,'グラフ','2020-04-30 02:59:50','2020-04-30 02:59:50'),(6,'重み付きグラフ','2020-04-30 02:59:50','2020-04-30 02:59:50'),(7,'整数論','2020-04-30 02:59:50','2020-04-30 02:59:50'),(8,'累積和','2020-04-30 02:59:50','2020-04-30 02:59:50'),(9,'bit','2020-04-30 02:59:50','2020-04-30 02:59:50');
+/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `problems`
+--
+
+DROP TABLE IF EXISTS `problems`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `problems` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `body` text NOT NULL,
+  `link` varchar(255) DEFAULT NULL,
+  `answer` text,
+  `article_id` bigint NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_problems_on_article_id` (`article_id`),
+  CONSTRAINT `fk_rails_2efeab015c` FOREIGN KEY (`article_id`) REFERENCES `articles` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `problems`
+--
+
+LOCK TABLES `problems` WRITE;
+/*!40000 ALTER TABLE `problems` DISABLE KEYS */;
+INSERT INTO `problems` VALUES (3,'最大和問題','n 個の整数 a[0],a[1],…,a[n−1] が与えられる。これらの整数から何個かの整数を選んで総和をとったときの、総和の最大値を求めよ。また、何も選ばない場合の総和は 0 であるものとする。\r\n\r\n【制約】\r\n・1≤n≤10000\r\n・−1000≤a[i]≤1000','https://qiita.com/drken/items/a5e6fe22863b7992efdb','#include <iostream>\r\n#include <algorithm>\r\nusing namespace std;\r\n\r\n// 入力\r\nint n;\r\nint a[10010];  // 最大10000個ですが、少しだけ多めにとります\r\n\r\n// DP テーブル\r\nint dp[10010];\r\n\r\n\r\nint main() {\r\n    cin >> n;\r\n    for (int i = 0; i < n; ++i) cin >> a[i];\r\n\r\n    dp[0] = 0;\r\n    for (int i = 0; i < n; ++i) {\r\n        dp[i + 1] = max(dp[i], dp[i] + a[i]);\r\n    }\r\n\r\n    cout << dp[n] << endl;\r\n}',4,'2020-05-01 05:40:18','2020-05-01 06:13:59'),(4,'部分和問題','n 個の正の整数 a[0],a[1],…,a[n−1] と正の整数 A が与えられる。これらの整数から何個かの整数を選んで総和が A になるようにすることが可能か判定せよ。可能ならば \"YES\" と出力し、不可能ならば \"NO\" と出力せよ。\r\n\r\n【制約】\r\n・1≤n≤100\r\n・1≤a[i]≤1000\r\n・1≤A≤10000','https://qiita.com/drken/items/a5e6fe22863b7992efdb','#include <iostream>\r\n#include <cstring>\r\n#include <algorithm>\r\nusing namespace std;\r\n\r\n// 入力\r\nint n, A;\r\nint a[110];\r\n\r\n// DPテーブル\r\nbool dp[110][10010];\r\n\r\nint main() {\r\n  cin >> n >> A;\r\n  for (int i = 0; i < n; ++i) cin >> a[i];\r\n\r\n  memset(dp, 0, sizeof(dp));   // 一旦すべて false に\r\n  dp[0][0] = true;             // dp[0][0] だけ true に\r\n\r\n  for (int i = 0; i < n; ++i) {\r\n    for (int j = 0; j <= A; ++j) {\r\n      dp[i+1][j] |= dp[i][j];\r\n      if (j >= a[i]) dp[i+1][j] |= dp[i][j-a[i]];\r\n    }\r\n  }\r\n\r\n  if (dp[n][A]) cout << \"YES\" << endl;\r\n  else cout << \"NO\" << endl;\r\n}',5,'2020-05-01 05:43:59','2020-05-01 06:12:21'),(5,'最長共通部分列 (LCS) 問題','2つの文字列 S, T が与えられる。\"abcde\" といった文字列の部分文字列とは、\"a\", \"ad\", \"abe\" といったように、文字列から文字を幾つか抜き出して順に繋げてできる文字列のことを言うものとする。このとき、S と Tの共通の部分文字列となる文字列の長さの最大値を求めよ。','https://qiita.com/drken/items/a5e6fe22863b7992efdb','#include <iostream>\r\n#include <cstring>\r\n#include <algorithm>\r\nusing namespace std;\r\n\r\nconst int INF = 1<<29;        // 十分大きい値にする\r\n\r\n// 入力\r\nstring S, T;\r\n\r\n// DP テーブル\r\nint dp[1010][1010];\r\n\r\nint main() {\r\n  cin >> S >> T;\r\n\r\n  memset(dp, 0, sizeof(dp));    // 初期化\r\n  for (int i = 0; i < S.size(); ++i) {\r\n    for (int j = 0; j < T.size(); ++j) {\r\n      if (S[i] == T[j]) dp[i+1][j+1] = max(dp[i+1][j+1], dp[i][j] + 1);\r\n      dp[i+1][j+1] = max(dp[i+1][j+1], dp[i+1][j]);\r\n      dp[i+1][j+1] = max(dp[i+1][j+1], dp[i][j+1]);\r\n    }\r\n  }\r\n\r\n  cout << dp[S.size()][T.size()] << endl;\r\n}',6,'2020-05-01 06:22:38','2020-05-01 06:22:38'),(6,'レーベンシュタイン距離 (diffコマンド)','2つの文字列 S, T が与えられます。S に以下の3種類の操作のいずれかを順次実施して TT に変換したいです。そのような一連の操作のうち、操作回数の最小値を求めよ。\r\n\r\n(操作)\r\n＜変更＞ Sの中から文字S[ i ]を1個選んで、その文字を好きな文字に変更します。\r\n＜削除＞ Sの中から文字S[ i ]を1個選んで、その文字を削除します。削除によって空文字列になることも許容します。\r\n＜挿入＞ Sの好きな箇所に好きな文字を挿入します。特に、Sの先頭や最後尾に文字を追加することもできます。\r\n\r\n【制約】\r\n・1≤|S|,|T|≤1000','https://qiita.com/drken/items/a5e6fe22863b7992efdb','#include <iostream>\r\n#include <cstring>\r\n#include <algorithm>\r\nusing namespace std;\r\n\r\nconst int INF = 1<<29;        // 十分大きい値にする\r\n\r\n// 入力\r\nint n, m;\r\nstring S, T;\r\n\r\n// DP テーブル\r\nint dp[1010][1010];\r\n\r\nint main() {\r\n  cin >> n >> m >> S >> T;\r\n\r\n  // 初期化\r\n  for (int i = 0; i < 1010; ++i) for (int j = 0; j < 1010; ++j) dp[i][j] = INF;\r\n  dp[0][0] = 0;\r\n\r\n  for (int i = -1; i < (int)S.size(); ++i) {\r\n    for (int j = -1; j < (int)T.size(); ++j) {\r\n      if (i == -1 && j == -1) continue;   // dp[0][0] は考慮済\r\n      if (i >= 0 && j >= 0) {\r\n        if (S[i] == T[j]) dp[i+1][j+1] = min(dp[i+1][j+1], dp[i][j]);\r\n        else dp[i+1][j+1] = min(dp[i+1][j+1], dp[i][j] + 1);\r\n      }\r\n      if (i >= 0) dp[i+1][j+1] = min(dp[i+1][j+1], dp[i][j+1] + 1);\r\n      if (j >= 0) dp[i+1][j+1] = min(dp[i+1][j+1], dp[i+1][j] + 1);\r\n    }\r\n  }\r\n\r\n  cout << dp[S.size()][T.size()] << endl;\r\n}',7,'2020-05-01 06:25:47','2020-05-01 06:25:47');
+/*!40000 ALTER TABLE `problems` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `schema_migrations`
+--
+
+DROP TABLE IF EXISTS `schema_migrations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `schema_migrations` (
+  `version` varchar(255) NOT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `schema_migrations`
+--
+
+LOCK TABLES `schema_migrations` WRITE;
+/*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
+INSERT INTO `schema_migrations` VALUES ('20200430003212'),('20200430010658'),('20200430024553'),('20200430031032'),('20200430031638'),('20200430043616'),('20200430092610');
+/*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password_digest` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'和泉匠','takumi221b4869@gmail.com','$2a$12$IXr8pC7G/Z.dHYSpppQYo.piMkEEh3RvbvT.MO7SRpjP9f3jUTmqy','2020-04-30 02:14:35','2020-04-30 02:14:35'),(2,'山田太郎','yamadataro221b4869@gmail.com','$2a$12$asA/K86kvhHgKzmtatg9LuJgutfL3YYa81vLQkVYwFN2TfHifP.SC','2020-04-30 06:11:33','2020-04-30 06:11:33');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2020-05-04 15:13:08
