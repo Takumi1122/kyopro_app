@@ -5,7 +5,7 @@ h2.my-4 記事の詳細
 table.table.table-hover
   tbody
     tr
-      th= Article.human_attribute_name(:id)
+      th style=("width: 15%") = Article.human_attribute_name(:id)
       td= @article.id
     tr
       th= Article.human_attribute_name(:title)
@@ -17,11 +17,8 @@ table.table.table-hover
       th= Article.human_attribute_name(:category_id)
       td= @article.category.name
     tr
-      th= Article.human_attribute_name(:created_at)
-      td= @article.created_at
-    tr
-      th= Article.human_attribute_name(:updated_at)
-      td= @article.updated_at
+      th= Article.human_attribute_name(:user_id)
+      td= @article.user.name
 
 .mb-4
   = link_to '関連問題一覧', article_problems_path(article_id: @article.id), class: 'btn btn-primary mr-3'

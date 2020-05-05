@@ -63,6 +63,10 @@ class ArticlesController < ApplicationController
     redirect_to root_path, notice: "記事「#{@article.title}」を削除しました。"
   end
 
+  def user_articles
+    @articles = current_user.articles
+  end
+
   private
 
   def article_params

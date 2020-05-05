@@ -51,6 +51,10 @@ class ProblemsController < ApplicationController
     redirect_to root_path, notice: "記事「#{@problem.title}」を削除しました。"
   end
 
+  def user_problems
+    @problems = current_user.problems
+  end
+
   private
 
   def problem_params

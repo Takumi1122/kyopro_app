@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   # ユーザー
   resource :user
+  get '/user/articles',  to: 'articles#user_articles'
+  get '/user/problems',  to: 'problems#user_problems'
 
   # ログイン　ログアウト
   get '/login', to: 'sessions#new'

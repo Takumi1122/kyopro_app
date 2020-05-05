@@ -5,7 +5,7 @@ h2.my-4 問題詳細
 table.table.table-hover
   tbody
     tr
-      th= Problem.human_attribute_name(:id)
+      th style=("width: 15%") = Problem.human_attribute_name(:id)
       td= @problem.id
     tr
       th= Problem.human_attribute_name(:title)
@@ -17,11 +17,8 @@ table.table.table-hover
       th= Problem.human_attribute_name(:link)
       td= auto_link(safe_join(@problem.link.split("\n"),tag(:br)), html: {target: '_blank', rel: "noopener noreferrer"})
     tr
-      th= Problem.human_attribute_name(:created_at)
-      td= @problem.created_at
-    tr
-      th= Problem.human_attribute_name(:updated_at)
-      td= @problem.updated_at
+      th= Problem.human_attribute_name(:user_id)
+      td= @problem.user.name
 
 h2.my-4.ans 解答 
 pre

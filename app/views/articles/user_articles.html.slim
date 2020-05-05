@@ -1,0 +1,12 @@
+h2.my-4 = "記事一覧"+ "（" + current_user.name + "）"
+
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Article.human_attribute_name(:title)
+      th= Article.human_attribute_name(:created_at)
+  tbody
+    - @articles.each do |article|
+      tr 
+        td= link_to article.title, article_path(article)
+        td= article.created_at

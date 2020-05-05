@@ -1,0 +1,12 @@
+h2.my-4 = "作成した問題一覧"+ "（" + current_user.name + "）"
+
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Problem.human_attribute_name(:title)
+      th= Problem.human_attribute_name(:link)
+  tbody
+    - @problems.each do |problem|
+      tr 
+        td= link_to problem.title, article_problem_path(problem.article, problem)
+        td= auto_link(problem.link)
