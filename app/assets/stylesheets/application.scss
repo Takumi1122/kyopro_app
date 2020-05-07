@@ -1,7 +1,33 @@
 //= require select2
 @import "bootstrap";
 
+h1,
 h2 {
+  /*線の種類（実線） 太さ 色*/
+  border-bottom: solid 1px #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  margin-top: 40px;
+}
+
+h1 {
+  font-size: 26px;
+}
+
+.it-Header_title {
+  font-size: 26px;
+  margin-bottom: 6px;
+  font-feature-settings: "palt";
+  line-height: 1.4;
+  word-wrap: break-word;
+  border-bottom: none;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
   font-size: 18px;
 }
 
@@ -21,4 +47,9 @@ html {
 
 .ans.ac:after {
   content: "\f107";
+}
+
+pre {
+  background-color: #f8f9fa;
+  padding: 10px;
 }

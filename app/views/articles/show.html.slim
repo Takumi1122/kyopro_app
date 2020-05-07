@@ -1,26 +1,12 @@
-h2.my-4 記事の詳細
+h1.mt-4.it-Header_title = @article.title
+span.badge.badge-info.p-2.mr-2 = "カテゴリ: " + @article.category.name
+span.badge.badge-info.p-2 = "作成者: " + @article.user.name
 
 .nav.justify-content-end
-  = link_to '一覧', root_path, class: 'nav-link'
-table.table.table-hover
-  tbody
-    tr
-      th style=("width: 15%") = Article.human_attribute_name(:id)
-      td= @article.id
-    tr
-      th= Article.human_attribute_name(:title)
-      td= @article.title
-    tr
-      th= Article.human_attribute_name(:body)
-      td= auto_link(safe_join(@article.body.split("\n"),tag(:br)), html: {target: '_blank', rel: "noopener noreferrer"})
-    tr
-      th= Article.human_attribute_name(:category_id)
-      td= @article.category.name
-    tr
-      th= Article.human_attribute_name(:user_id)
-      td= @article.user.name
+  = link_to '記事一覧', root_path, class: 'nav-link'
+p = markdown(@article.body).html_safe
 
-.mb-4
+.mb-5
   = link_to '関連問題一覧', article_problems_path(article_id: @article.id), class: 'btn btn-primary mr-3'
   = link_to '関連問題を作成', new_article_problem_path(article_id: @article.id), class: 'btn btn-primary mr-3'
   - if(@article.user == current_user)

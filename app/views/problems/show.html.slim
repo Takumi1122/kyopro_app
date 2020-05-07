@@ -1,4 +1,4 @@
-h2.my-4 問題詳細
+h1.my-4.it-Header_title 問題詳細
 
 .nav.justify-content-end
   = link_to '一覧', root_path, class: 'nav-link'
@@ -25,7 +25,7 @@ table.table.table-hover
 
 h2.my-4.ans 解答 
 pre
-  code.bg-light.p-3= @problem.answer
+  code.bg-light= @problem.answer
 
 
 .mb-4
