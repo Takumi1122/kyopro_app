@@ -1,7 +1,7 @@
 .card.my-4
   .card-header プロフィール
   .card-body
-    h2.card-title = current_user.name
+    h3.card-title = current_user.name
     p.card-text = current_user.email
     .card-text = link_to '作成した記事', user_articles_path
     .card-text = link_to '作成した問題', user_problems_path
