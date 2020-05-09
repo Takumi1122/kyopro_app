@@ -15,6 +15,7 @@ h1.my-4.it-Header_title 問題一覧
       = f.collection_select :article_id_eq, @articles, :id, :title, {prompt: ''}, {class: 'form-control article-problem'}
   .form-group
     = f.submit class: 'btn btn-outline-primary'
+    = link_to "クリア", problems_path, class: 'btn btn-outline-primary ml-3'
 
 .table-responsive
   table.table.table-hover

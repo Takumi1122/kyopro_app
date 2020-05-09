@@ -6,7 +6,7 @@ span.badge.badge-info.p-2 = "作成者: " + @article.user.name
   = link_to '記事一覧', root_path, class: 'nav-link'
 p = markdown(@article.body).html_safe
 
-.mb-5
+.my-5
   = link_to '関連問題一覧', article_problems_path(article_id: @article.id), class: 'btn btn-primary mr-3'
   = link_to '関連問題を作成', new_article_problem_path(article_id: @article.id), class: 'btn btn-primary mr-3'
   - if(@article.user == current_user)

@@ -28,7 +28,7 @@ pre
   code.bg-light= @problem.answer
 
 
-.mb-4
+.my-4
   = link_to '関連問題一覧', article_problems_path(article_id: @article.id), class: 'btn btn-primary mr-3'
   - if(@problem.user == current_user)
     = link_to '編集', edit_article_problem_path, class: 'btn btn-primary mr-3'
