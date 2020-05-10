@@ -17,3 +17,4 @@
     = f.label :password_confirmation, 'パスワード（確認）'
     = f.password_field :password_confirmation, class: 'form-control'
   = f.submit '登録する', class: 'btn btn-primary'
+  = link_to "ログイン画面へ", login_path, class: 'btn btn-primary ml-3'
