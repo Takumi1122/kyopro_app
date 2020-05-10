@@ -1,8 +1,16 @@
 # 競プロアプリ
 競技プログラミングで使用するデータ構造・アルゴリズムを記事や問題にしてまとめたアプリです。
 ユーザー登録をしたら、記事や問題の閲覧/作成/編集/削除等ができます。
-
-![kyopro-app-index](https://user-images.githubusercontent.com/42643926/80936240-2e40bb00-8e0b-11ea-97e5-5216e6d1eaec.png)
+|画面|画面|
+|---|---|
+|![kyopro_index](https://user-images.githubusercontent.com/42643926/81492652-8b89b000-92d4-11ea-8339-5476d3f1e66a.png)|![kyopro_article_show](https://user-images.githubusercontent.com/42643926/81492662-a0feda00-92d4-11ea-8bbc-fd2053f530a1.png)|
+|![kyopro_app_problems](https://user-images.githubusercontent.com/42643926/81492664-a4926100-92d4-11ea-9a58-00535027add8.png)|![kyopro_app_new_article](https://user-images.githubusercontent.com/42643926/81492667-a9571500-92d4-11ea-871b-da6e2b11bc10.png)|
+|![kyopro_app_problem_show](https://user-images.githubusercontent.com/42643926/81492680-c1c72f80-92d4-11ea-84e9-aa6007e1a01a.png)|![kyopro_app_new_problem](https://user-images.githubusercontent.com/42643926/81492681-c4298980-92d4-11ea-8562-a6f1532e8987.png)|
+# 機能一覧
+- ユーザーの登録/ログイン/ログアウト
+- 記事の登録/編集/閲覧/削除 (markdownが使える)
+- 問題の登録/編集/閲覧/削除
+- 問題の検索(タイトル・登録日時・関連記事で検索可能)
 
 # 環境
 - macOS Catalina 10.15.4
