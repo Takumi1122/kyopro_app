@@ -2,7 +2,7 @@
 競技プログラミングで使用するデータ構造・アルゴリズムを記事や問題にしてまとめたアプリです。  
 ユーザー登録をしたら、記事や問題の閲覧/作成/編集/削除等ができます。  
   
-  
+※クリックで画面が拡大できます
 |画面|画面|
 |---|---|
 |![kyopro_index](https://user-images.githubusercontent.com/42643926/81492652-8b89b000-92d4-11ea-8339-5476d3f1e66a.png)|![kyopro_article_show](https://user-images.githubusercontent.com/42643926/81492662-a0feda00-92d4-11ea-8bbc-fd2053f530a1.png)|
