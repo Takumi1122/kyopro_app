@@ -8,6 +8,7 @@
 |![kyopro_index](https://user-images.githubusercontent.com/42643926/81492652-8b89b000-92d4-11ea-8339-5476d3f1e66a.png)|![kyopro_article_show](https://user-images.githubusercontent.com/42643926/81492662-a0feda00-92d4-11ea-8bbc-fd2053f530a1.png)|
 |![kyopro_app_problems](https://user-images.githubusercontent.com/42643926/81492664-a4926100-92d4-11ea-9a58-00535027add8.png)|![kyopro_app_new_article](https://user-images.githubusercontent.com/42643926/81492667-a9571500-92d4-11ea-871b-da6e2b11bc10.png)|
 |![kyopro_app_problem_show](https://user-images.githubusercontent.com/42643926/81492680-c1c72f80-92d4-11ea-84e9-aa6007e1a01a.png)|![kyopro_app_new_problem](https://user-images.githubusercontent.com/42643926/81492681-c4298980-92d4-11ea-8562-a6f1532e8987.png)|
+|![kyopro-app-register](https://user-images.githubusercontent.com/42643926/82267017-3a4d8080-99a6-11ea-9eda-e1bb95b293a9.png)|![kyopro-app-login](https://user-images.githubusercontent.com/42643926/82267042-4b968d00-99a6-11ea-9f5c-dbf00a6c481d.png)|
 # 機能一覧
 - ユーザーの登録/ログイン/ログアウト
 - 記事の登録/編集/閲覧/削除 (markdownが使える)
